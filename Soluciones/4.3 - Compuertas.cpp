@@ -18,7 +18,6 @@ Nodo* cabeza;
 
 /*
 	Problema 4.3
-	Complejidad de tiempo: O(N)
 */
 int main() {
 	string linea;
@@ -31,8 +30,7 @@ int main() {
 			string str(temp.begin(), temp.end());
 			operadores.push_back(str);
 			temp.clear();
-		}
-		else if (linea[i] != ')' && linea[i] != ' ') {
+		} else if (linea[i] != ')' && linea[i] != ' ') {
 			temp.push_back(linea[i]);
 		}
 	}
@@ -56,8 +54,7 @@ int main() {
 				if (cabeza->tipo == NOT) {
 					hojas.push(cabeza);
 				}
-			}
-			else {
+			} else {
 				cabeza->b = siguiente;
 				if (cabeza->a->tipo == TRUE || cabeza->a->tipo == FALSE) {
 					hojas.push(cabeza);
@@ -67,8 +64,7 @@ int main() {
 				while (cabeza->tipo == NOT) {
 					cabeza = cabeza->previo;
 				}
-			}
-			else {
+			} else {
 				if (cabeza->b != NULL) {
 					cabeza = cabeza->previo;
 					while (cabeza->tipo == NOT) {
@@ -76,16 +72,14 @@ int main() {
 					}
 				}
 			}
-		}
-		else if (operadores[i] == "FALSE") {
+		} else if (operadores[i] == "FALSE") {
 			siguiente->tipo = FALSE;
 			if (cabeza->a == NULL) {
 				cabeza->a = siguiente;
 				if (cabeza->tipo == NOT) {
 					hojas.push(cabeza);
 				}
-			}
-			else {
+			} else {
 				cabeza->b = siguiente;
 				if (cabeza->a->tipo == TRUE || cabeza->a->tipo == FALSE) {
 					hojas.push(cabeza);
@@ -95,8 +89,7 @@ int main() {
 				while (cabeza->tipo == NOT) {
 					cabeza = cabeza->previo;
 				}
-			}
-			else {
+			} else {
 				if (cabeza->b != NULL) {
 					cabeza = cabeza->previo;
 					while (cabeza->tipo == NOT) {
@@ -104,15 +97,12 @@ int main() {
 					}
 				}
 			}
-		}
-		else {
+		} else {
 			if (cabeza->a == NULL) {
 				cabeza->a = siguiente;
-			}
-			else if (cabeza->b == NULL) {
+			} else if (cabeza->b == NULL) {
 				cabeza->b = siguiente;
-			}
-			else {
+			} else {
 				while (cabeza->b != NULL || cabeza->tipo == NOT) {
 					cabeza = cabeza->previo;
 				}
@@ -120,23 +110,17 @@ int main() {
 			}
 			if (operadores[i] == "AND") {
 				siguiente->tipo = AND;
-			}
-			else if (operadores[i] == "OR") {
+			} else if (operadores[i] == "OR") {
 				siguiente->tipo = OR;
-			}
-			else if (operadores[i] == "NOT") {
+			} else if (operadores[i] == "NOT") {
 				siguiente->tipo = NOT;
-			}
-			else if (operadores[i] == "NOR") {
+			} else if (operadores[i] == "NOR") {
 				siguiente->tipo = NOR;
-			}
-			else if (operadores[i] == "NAND") {
+			} else if (operadores[i] == "NAND") {
 				siguiente->tipo = NAND;
-			}
-			else if (operadores[i] == "XOR") {
+			} else if (operadores[i] == "XOR") {
 				siguiente->tipo = XOR;
-			}
-			else if (operadores[i] == "XNOR") {
+			} else if (operadores[i] == "XNOR") {
 				siguiente->tipo = XNOR;
 			}
 			cabeza = siguiente;
@@ -153,12 +137,10 @@ int main() {
 			if (hojaActual->a->tipo == TRUE) {
 				hojaActual->tipo = FALSE;
 				hojas.push(hojaActual->previo);
-			}
-			else if (hojaActual->a->tipo == FALSE) {
+			} else if (hojaActual->a->tipo == FALSE) {
 				hojaActual->tipo = TRUE;
 				hojas.push(hojaActual->previo);
-			}
-			else {
+			} else {
 				hojas.push(hojaActual);
 			}
 		}
@@ -168,55 +150,48 @@ int main() {
 				case AND:
 					if (hojaActual->a->tipo == TRUE && hojaActual->b->tipo == TRUE) {
 						hojaActual->tipo = TRUE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = FALSE;
 					}
 					break;
 				case OR:
 					if (hojaActual->a->tipo == TRUE || hojaActual->b->tipo == TRUE) {
 						hojaActual->tipo = TRUE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = FALSE;
 					}
 					break;
 				case NAND:
 					if (hojaActual->a->tipo == TRUE && hojaActual->b->tipo == TRUE) {
 						hojaActual->tipo = FALSE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = TRUE;
 					}
 					break;
 				case NOR:
 					if (hojaActual->a->tipo == TRUE || hojaActual->b->tipo == TRUE) {
 						hojaActual->tipo = FALSE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = TRUE;
 					}
 					break;
 				case XOR:
 					if ((hojaActual->a->tipo == TRUE) ^ (hojaActual->b->tipo == TRUE)) {
 						hojaActual->tipo = TRUE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = FALSE;
 					}
 					break;
 				case XNOR:
 					if ((hojaActual->a->tipo == TRUE) ^ (hojaActual->b->tipo == TRUE)) {
 						hojaActual->tipo = FALSE;
-					}
-					else {
+					} else {
 						hojaActual->tipo = TRUE;
 					}
 					break;
 				}
 				hojas.push(hojaActual->previo);
-			}
-			else {
+			} else {
 				hojas.push(hojaActual);
 			}
 		}
@@ -227,8 +202,7 @@ int main() {
 	}
 	if (cabeza->a->tipo == TRUE) {
 		cout << "TRUE";
-	}
-	else {
+	} else {
 		cout << "FALSE";
 	}
 }
