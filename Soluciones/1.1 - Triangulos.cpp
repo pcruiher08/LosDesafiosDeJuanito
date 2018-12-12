@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ int main() {
 		int lado;
 		cin >> lado;
 		float altura = lado * sqrt(3) / 2;
-		cout << altura;
+		cout << fixed << setprecision(2);
+		cout << altura << endl;
 	}
 }

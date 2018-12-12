@@ -13,8 +13,7 @@ int main() {
 	//El angulo es agudo cuando el producto punto es positivo
 	if (productoPunto > 0) {
 		cout << "SI";
-	}
-	else {
+	} else {
 		cout << "NO";
 	}
 }

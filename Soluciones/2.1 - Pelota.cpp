@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		int xFinal, millisegundos;
 		cin >> xFinal >> millisegundos;
+		cout << fixed << setprecision(2);
 		cout << (float)(xFinal - xInicial) / millisegundos << endl;
 		xInicial = xFinal;
 	}

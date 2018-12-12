@@ -18,11 +18,9 @@ int main() {
 	float discriminante = alturas[2] - 2 * alturas[1] + alturas[0];
 	if (discriminante > 0) {
 		cout << "ARRIBA";
-	}
-	else if (discriminante < 0) {
+	} else if (discriminante < 0) {
 		cout << "ABAJO";
-	}
-	else {
+	} else {
 		cout << "LINEA";
 	}
 	//Descarta los demas puntos
