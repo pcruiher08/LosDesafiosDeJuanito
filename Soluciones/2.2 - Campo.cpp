@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -53,12 +54,13 @@ int main() {
 		cin >> ubicacion.x >> ubicacion.y >> ubicacion.z;
 		Punto vectorDistancia = VectorDistancia(origen, ubicacion);
 		float distancia = Magnitud(vectorDistancia);
-		float intensidad = 9 * valor / distancia;
-		Punto vectorUnitaria = EscalarVector(vectorDistancia, 1 / distancia);
+		float intensidad = 9 * valor / (distancia * distancia);
+		Punto vectorUnitaria = EscalarVector(vectorDistancia, -1 / distancia);
 		Punto vectorCampo = EscalarVector(vectorUnitaria, intensidad);
 		vectorFinal.x += vectorCampo.x;
 		vectorFinal.y += vectorCampo.y;
 		vectorFinal.z += vectorCampo.z;
 	}
+	cout << fixed << setprecision(2);
 	cout << vectorFinal.x << " " << vectorFinal.y << " " << vectorFinal.z << " " << endl;
 }
